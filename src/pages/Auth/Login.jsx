@@ -12,8 +12,8 @@ import {
   Stack,
   Image,
 } from '@chakra-ui/react'
-import Navbar from '../component/Navbar'
-import Footer from '../component/Footer'
+import Navbar from '../../component/Navbar'
+import Footer from '../../component/Footer'
 
 export default function Login() {
   return (
