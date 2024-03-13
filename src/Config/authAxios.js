@@ -3,7 +3,7 @@ import axios from "axios";
 const Token = null;
 
 const instance = axios.create({
-  baseURL: "",
+  baseURL: process.env.baseURL ,
   headers: {
     Authorization: `Bearer ${Token}`,
   },
