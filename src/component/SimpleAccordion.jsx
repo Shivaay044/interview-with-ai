@@ -16,7 +16,7 @@ import { ChevronDownIcon } from '@chakra-ui/icons'
 export default function SimpleAccordion() {
   return (
     <Flex
-      minH={'100vh'}
+      minH={'50vh'}
       align={'center'}
       justify={'center'}
       bg={useColorModeValue('gray.50', 'gray.800')}>
