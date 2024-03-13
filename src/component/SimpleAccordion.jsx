@@ -1,5 +1,3 @@
-'use client'
-
 import {
   Accordion,
   AccordionItem,
@@ -9,72 +7,83 @@ import {
   useColorModeValue,
   Text,
   Container,
-} from '@chakra-ui/react'
+  AccordionIcon,
+  Box,
+  Heading,
+} from '@chakra-ui/react';
 
-import { ChevronDownIcon } from '@chakra-ui/icons'
+import { ChevronDownIcon } from '@chakra-ui/icons';
 
 export default function SimpleAccordion() {
+  const feedbackItems = [
+    {
+      title: 'AI Analyzed Feedback',
+      content: 'Get detailed interview feedback that provides you insights on your skills and feedback for every question answered.',
+    },
+    {
+      title: 'AI Analyzed Feedback Post Interview Completion',
+      content: 'Suggested answers to help you learn and improvise.',
+    },
+    {
+      title: 'Get Access to Interview Recordings',
+      content: 'Done! You can now access interview recordings.',
+    },
+    {
+      title: 'Performance Metrics Overview',
+      content: 'Receive a comprehensive overview of your performance metrics, including response time and accuracy.',
+    },
+    {
+      title: 'Customized Learning Pathways',
+      content: 'Unlock personalized learning pathways based on your interview performance to enhance your skills.',
+    },
+    {
+      title: 'Interview History and Trends',
+      content: 'Track your interview history and identify trends to focus on areas that need improvement.',
+    },
+  ];
+
   return (
     <Flex
-      minH={'50vh'}
-      align={'center'}
-      justify={'center'}
-      bg={useColorModeValue('gray.50', 'gray.800')}>
-      <Container>
-        <Accordion allowMultiple width="100%" maxW="lg" rounded="lg">
-          <AccordionItem>
-            <AccordionButton
-              display="flex"
-              alignItems="center"
-              justifyContent="space-between"
-              p={4}>
-              <Text fontSize="md">What is Chakra UI?</Text>
-              <ChevronDownIcon fontSize="24px" />
-            </AccordionButton>
-            <AccordionPanel pb={4}>
-              <Text color="gray.600">
-                Chakra UI is a simple and modular component library that gives developers
-                the building blocks they need to create web applications.
-              </Text>
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem>
-            <AccordionButton
-              display="flex"
-              alignItems="center"
-              justifyContent="space-between"
-              p={4}>
-              <Text fontSize="md">What advantages to use?</Text>
-              <ChevronDownIcon fontSize="24px" />
-            </AccordionButton>
-            <AccordionPanel pb={4}>
-              <Text color="gray.600">
-                Chakra UI offers a variety of advantages including ease of use,
-                accessibility, and customization options. It also provides a comprehensive
-                set of UI components and is fully compatible with React.
-              </Text>
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem>
-            <AccordionButton
-              display="flex"
-              alignItems="center"
-              justifyContent="space-between"
-              p={4}>
-              <Text fontSize="md">How to start using Chakra UI?</Text>
-              <ChevronDownIcon fontSize="24px" />
-            </AccordionButton>
-            <AccordionPanel pb={4}>
-              <Text color="gray.600">
-                To get started with Chakra UI, you can install it via npm or yarn, and
-                then import the components you need in your project. The Chakra UI
-                documentation is also a great resource for getting started and learning
-                more about the library.
-              </Text>
-            </AccordionPanel>
-          </AccordionItem>
+      direction="column"
+      align="center"
+      justify="center"
+      minH="50vh"
+      bg={useColorModeValue('gray.50', 'gray.800')}
+    >
+      <Container maxW="2xl" mt="8" color={useColorModeValue('white.100', 'white.700')}>
+        <Heading
+          as="h2"
+          fontSize="4xl"
+          mb="6"
+          textAlign="center"
+          fontWeight="bold"
+          color="teal.500"
+          textTransform="uppercase"
+          letterSpacing="wide"
+        >
+          Frequently Asked Questions
+        </Heading>
+
+        <Accordion allowToggle>
+          {feedbackItems.map((item, index) => (
+            <AccordionItem key={index} borderWidth="1px" borderRadius="md" mb="4">
+              <h2>
+                <AccordionButton _expanded={{ bg: 'blue.500', color: 'white' }} p="2" borderRadius="md">
+                  <Box flex="1" textAlign="left">
+                    <Text fontSize="lg"  textColor={"gray.900"}>
+                      {item.title}
+                    </Text>
+                  </Box>
+                  <AccordionIcon />
+                </AccordionButton>
+              </h2>
+              <AccordionPanel pb={4}>
+                <Text>{item.content}</Text>
+              </AccordionPanel>
+            </AccordionItem>
+          ))}
         </Accordion>
       </Container>
     </Flex>
-  )
+  );
 }
