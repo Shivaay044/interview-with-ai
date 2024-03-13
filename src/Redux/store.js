@@ -1,10 +1,11 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
-import { thunk } from "redux-thunk";
+import  {thunk}  from "redux-thunk";
+import { rootReducers } from "./combineReducer";
 
 
 
 export const store = configureStore({
-    reducer: combineReducers,
-    middleware : [thunk,logger ]
+    reducer: rootReducers,
+    middleware : ()=>[logger,thunk]
 })
