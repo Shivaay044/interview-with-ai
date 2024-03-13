@@ -22,7 +22,7 @@ import ThemeButton from './ThemeButton'
 
 
 
-const Links = ['Dashboard', 'Projects', 'Team']
+const Links = ['dashboard', 'resultpage', 'Team']
 
 const NavLink = (props) => {
   const { children } = props
@@ -37,7 +37,7 @@ const NavLink = (props) => {
         textDecoration: 'none',
         bg: useColorModeValue('gray.200', 'gray.700'),
       }}
-      href={'#'}>
+      href={children}>
       {children}
     </Box>
   )
@@ -58,7 +58,7 @@ export default function Navbar() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-            <Box>Logo</Box>
+            <Box><a href="/"> Logo</a></Box>
             <HStack as={'nav'} spacing={4} display={{ base: 'none', md: 'flex' }}>
               {Links.map((link) => (
                 <NavLink key={link}>{link}</NavLink>
@@ -82,10 +82,10 @@ export default function Navbar() {
                 />
               </MenuButton>
               <MenuList>
-                <MenuItem>Link 1</MenuItem>
-                <MenuItem>Link 2</MenuItem>
+                <MenuItem><a href="/login">Login</a></MenuItem>
+                <MenuItem> <a href="/singup">Singup</a></MenuItem>
                 <MenuDivider />
-                <MenuItem>Link 3</MenuItem>
+                <MenuItem><a href="/login">Logout</a></MenuItem>
               </MenuList>
             </Menu>
           </Flex>

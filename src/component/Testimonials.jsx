@@ -1,5 +1,3 @@
-'use client'
-
 import {
   Box,
   Flex,
@@ -9,18 +7,40 @@ import {
   Container,
   Avatar,
   useColorModeValue,
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
 
-
+const testimonialData = [
+  {
+    heading: 'Efficient Collaborating',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.',
+    name: 'Jane Cooper',
+    title: 'CEO at ABC Corporation',
+    avatar: 'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80',
+  },
+  {
+    heading: 'Intuitive Design',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.',
+    name: 'John Doe',
+    title: 'CTO at XYZ Tech',
+    avatar: 'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80',
+  },
+  {
+    heading: 'Mindblowing Service',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.',
+    name: 'Emily Smith',
+    title: 'COO at QRS Solutions',
+    avatar: 'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80',
+  },
+];
 
 const Testimonial = (props) => {
-  const { children } = props
+  const { children } = props;
 
-  return <Box>{children}</Box>
-}
+  return <Box>{children}</Box>;
+};
 
 const TestimonialContent = (props) => {
-  const { children } = props
+  const { children } = props;
 
   return (
     <Stack
@@ -45,40 +65,38 @@ const TestimonialContent = (props) => {
         bottom: '-16px',
         left: '50%',
         transform: 'translateX(-50%)',
-      }}>
+      }}
+    >
       {children}
     </Stack>
-  )
-}
+  );
+};
 
 const TestimonialHeading = (props) => {
-  const { children } = props
+  const { children } = props;
 
   return (
     <Heading as={'h3'} fontSize={'xl'}>
       {children}
     </Heading>
-  )
-}
+  );
+};
 
 const TestimonialText = (props) => {
-  const { children } = props
+  const { children } = props;
 
   return (
     <Text
       textAlign={'center'}
       color={useColorModeValue('gray.600', 'gray.400')}
-      fontSize={'sm'}>
+      fontSize={'sm'}
+    >
       {children}
     </Text>
-  )
-}
+  );
+};
 
-const TestimonialAvatar = ({
-  src,
-  name,
-  title,
-}) => {
+const TestimonialAvatar = ({ src, name, title }) => {
   return (
     <Flex align={'center'} mt={8} direction={'column'}>
       <Avatar src={src} mb={2} />
@@ -89,8 +107,8 @@ const TestimonialAvatar = ({
         </Text>
       </Stack>
     </Flex>
-  )
-}
+  );
+};
 
 export default function Testimonials() {
   return (
@@ -102,57 +120,23 @@ export default function Testimonials() {
         </Stack>
         <Stack
           direction={{ base: 'column', md: 'row' }}
-          spacing={{ base: 10, md: 4, lg: 10 }}>
-          <Testimonial>
-            <TestimonialContent>
-              <TestimonialHeading>Efficient Collaborating</TestimonialHeading>
-              <TestimonialText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed
-                imperdiet nibh lectus feugiat nunc sem.
-              </TestimonialText>
-            </TestimonialContent>
-            <TestimonialAvatar
-              src={
-                'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
-              }
-              name={'Jane Cooper'}
-              title={'CEO at ABC Corporation'}
-            />
-          </Testimonial>
-          <Testimonial>
-            <TestimonialContent>
-              <TestimonialHeading>Intuitive Design</TestimonialHeading>
-              <TestimonialText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed
-                imperdiet nibh lectus feugiat nunc sem.
-              </TestimonialText>
-            </TestimonialContent>
-            <TestimonialAvatar
-              src={
-                'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
-              }
-              name={'Jane Cooper'}
-              title={'CEO at ABC Corporation'}
-            />
-          </Testimonial>
-          <Testimonial>
-            <TestimonialContent>
-              <TestimonialHeading>Mindblowing Service</TestimonialHeading>
-              <TestimonialText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed
-                imperdiet nibh lectus feugiat nunc sem.
-              </TestimonialText>
-            </TestimonialContent>
-            <TestimonialAvatar
-              src={
-                'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
-              }
-              name={'Jane Cooper'}
-              title={'CEO at ABC Corporation'}
-            />
-          </Testimonial>
+          spacing={{ base: 10, md: 4, lg: 10 }}
+        >
+          {testimonialData.map((testimonial, index) => (
+            <Testimonial key={index}>
+              <TestimonialContent>
+                <TestimonialHeading>{testimonial.heading}</TestimonialHeading>
+                <TestimonialText>{testimonial.text}</TestimonialText>
+              </TestimonialContent>
+              <TestimonialAvatar
+                src={testimonial.avatar}
+                name={testimonial.name}
+                title={testimonial.title}
+              />
+            </Testimonial>
+          ))}
         </Stack>
       </Container>
     </Box>
-  )
+  );
 }
