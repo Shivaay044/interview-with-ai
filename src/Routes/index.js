@@ -5,6 +5,8 @@ import Login from "../pages/Auth/Login";
 import Signup from "../pages/Auth/Singup";
 import NotFound from "../component/NotFound";
 import StepBuilder from "../pages/Instruction";
+import Dashboard from "../pages/User/Dashboard";
+import ResultPage from "../pages/User/ResultPage";
 
 
 function MainRoutes() {
@@ -14,6 +16,8 @@ function MainRoutes() {
     <Route path="/singup" element={<Signup/>}/>
     <Route path="/instruction" element={<StepBuilder/>}/>
     <Route path="*" element={<NotFound/>}/>
+    <Route path="/dashboard" element={<Dashboard />}/>
+    <Route path="/resultpage" element={<ResultPage />}/>
    
   </Routes>;
 }

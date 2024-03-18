@@ -826,7 +826,7 @@ const Illustration = (props) => {
 
 export default function Hero() {
   return (
-    <Container maxW={'5xl'}>
+    <Container maxW={'5xl'} mt={"auto"}>
       <Stack
         textAlign={'center'}
         align={'center'}
@@ -836,15 +836,13 @@ export default function Hero() {
           fontWeight={600}
           fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
           lineHeight={'110%'}>
-          Meeting scheduling{' '}
+          Elevate Your Future with Vision and{' '}
           <Text as={'span'} color={'orange.400'}>
-            made easy
+          Purpose
           </Text>
         </Heading>
         <Text color={'gray.500'} maxW={'3xl'}>
-          Never miss a meeting. Never be late for one too. Keep track of your meetings and
-          receive smart reminders in appropriate times. Read your smart “Daily Agenda”
-          every morning.
+        Unleash Your Potential, Navigate Challenges, and Achieve Success – Your Journey Begins Here. Welcome to Infinite Possibilities!
         </Text>
         <Stack spacing={6} direction={'row'}>
           <Button
@@ -860,7 +858,7 @@ export default function Hero() {
           </Button>
         </Stack>
         <Flex w={'full'}>
-          <Illustration height={{ sm: '24rem', lg: '28rem' }} mt={{ base: 12, sm: 16 }} />
+          <Illustration height={{ sm: '24rem', lg: '28rem' }} mt={{ base: 6, sm: 2 }} />
         </Flex>
       </Stack>
     </Container>
