@@ -19,6 +19,7 @@ import { HiOutlineMail } from 'react-icons/hi';
 import { BsArrowUpShort, BsArrowDownShort } from 'react-icons/bs';
 import { AiOutlineLike, AiOutlineEye } from 'react-icons/ai';
 import { motion } from 'framer-motion';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 let priviousinterviewdata=[
@@ -59,8 +60,18 @@ const Dashboard = () => {
 
   const [previousInterviews, setPreviousInterviews] = useState(priviousinterviewdata);
 
+
+  const dispatch=useDispatch()
+
+  const interviewdata=useSelector((store)=>store.interviewReducer)
+
+  console.log(interviewdata)
+
   const handleStartInterview = () => {
+    
     console.log('Interview started');
+    
+
   };
 
   const handleViewDetails = (interview) => {

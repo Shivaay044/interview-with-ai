@@ -1,5 +1,4 @@
-'use client'
-
+import React from 'react';
 import {
   Box,
   Flex,
@@ -9,19 +8,64 @@ import {
   Container,
   Avatar,
   useColorModeValue,
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
+
+const testimonialData = [
+  {
+    heading: 'Excellent Communication Skills',
+    text: 'The candidate demonstrated excellent communication skills during the interview. Clear and concise articulation of ideas.',
+    name: 'Alex Johnson',
+    title: 'Senior Developer',
+    src: 'https://images.unsplash.com/photo-1546525848-2c3f13958129?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDF8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80',
+  },
+  {
+    heading: 'Strong Problem-Solving Ability',
+    text: 'Impressive problem-solving ability demonstrated during the interview. Analyzed complex scenarios effectively.',
+    name: 'Sarah Chen',
+    title: 'Product Manager',
+    src: 'https://images.unsplash.com/photo-1534836477205-d56e14f0e1d9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDF8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80',
+  },
+  {
+    heading: 'Great Team Collaboration',
+    text: 'The candidate exhibited great teamwork skills during the AI-assisted interview. Actively participated and supported colleagues.',
+    name: 'Chris Thompson',
+    title: 'Project Lead',
+    src: 'https://images.unsplash.com/photo-1545167622-f462b0b59b6a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDF8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80',
+  },
+];
 
 
+const Testimonials = () => {
+  return (
+    <Box bg={useColorModeValue('gray.100', 'gray.700')}>
+      <Container maxW={'7xl'} py={16} as={Stack} spacing={12}>
+        <Stack spacing={0} align={'center'}>
+          <Heading>Our Clients Speak</Heading>
+          <Text>We have been working with clients around the world</Text>
+        </Stack>
+        <Stack
+          direction={{ base: 'column', md: 'row' }}
+          spacing={{ base: 10, md: 4, lg: 10 }}>
+          {testimonialData.map((testimonial, index) => (
+            <Testimonial key={index} {...testimonial} />
+          ))}
+        </Stack>
+      </Container>
+    </Box>
+  );
+};
 
-const Testimonial = (props) => {
-  const { children } = props
+const Testimonial = ({ heading, text, src, name, title }) => {
+  return (
+    <TestimonialContent>
+      <TestimonialHeading>{heading}</TestimonialHeading>
+      <TestimonialText>{text}</TestimonialText>
+      <TestimonialAvatar src={src} name={name} title={title} />
+    </TestimonialContent>
+  );
+};
 
-  return <Box>{children}</Box>
-}
-
-const TestimonialContent = (props) => {
-  const { children } = props
-
+const TestimonialContent = ({ children }) => {
   return (
     <Stack
       bg={useColorModeValue('white', 'gray.800')}
@@ -48,22 +92,18 @@ const TestimonialContent = (props) => {
       }}>
       {children}
     </Stack>
-  )
-}
+  );
+};
 
-const TestimonialHeading = (props) => {
-  const { children } = props
-
+const TestimonialHeading = ({ children }) => {
   return (
     <Heading as={'h3'} fontSize={'xl'}>
       {children}
     </Heading>
-  )
-}
+  );
+};
 
-const TestimonialText = (props) => {
-  const { children } = props
-
+const TestimonialText = ({ children }) => {
   return (
     <Text
       textAlign={'center'}
@@ -71,14 +111,10 @@ const TestimonialText = (props) => {
       fontSize={'sm'}>
       {children}
     </Text>
-  )
-}
+  );
+};
 
-const TestimonialAvatar = ({
-  src,
-  name,
-  title,
-}) => {
+const TestimonialAvatar = ({ src, name, title }) => {
   return (
     <Flex align={'center'} mt={8} direction={'column'}>
       <Avatar src={src} mb={2} />
@@ -89,70 +125,7 @@ const TestimonialAvatar = ({
         </Text>
       </Stack>
     </Flex>
-  )
-}
+  );
+};
 
-export default function Testimonials() {
-  return (
-    <Box bg={useColorModeValue('gray.100', 'gray.700')}>
-      <Container maxW={'7xl'} py={16} as={Stack} spacing={12}>
-        <Stack spacing={0} align={'center'}>
-          <Heading>Our Clients Speak</Heading>
-          <Text>We have been working with clients around the world</Text>
-        </Stack>
-        <Stack
-          direction={{ base: 'column', md: 'row' }}
-          spacing={{ base: 10, md: 4, lg: 10 }}>
-          <Testimonial>
-            <TestimonialContent>
-              <TestimonialHeading>Efficient Collaborating</TestimonialHeading>
-              <TestimonialText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed
-                imperdiet nibh lectus feugiat nunc sem.
-              </TestimonialText>
-            </TestimonialContent>
-            <TestimonialAvatar
-              src={
-                'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
-              }
-              name={'Jane Cooper'}
-              title={'CEO at ABC Corporation'}
-            />
-          </Testimonial>
-          <Testimonial>
-            <TestimonialContent>
-              <TestimonialHeading>Intuitive Design</TestimonialHeading>
-              <TestimonialText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed
-                imperdiet nibh lectus feugiat nunc sem.
-              </TestimonialText>
-            </TestimonialContent>
-            <TestimonialAvatar
-              src={
-                'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
-              }
-              name={'Jane Cooper'}
-              title={'CEO at ABC Corporation'}
-            />
-          </Testimonial>
-          <Testimonial>
-            <TestimonialContent>
-              <TestimonialHeading>Mindblowing Service</TestimonialHeading>
-              <TestimonialText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed
-                imperdiet nibh lectus feugiat nunc sem.
-              </TestimonialText>
-            </TestimonialContent>
-            <TestimonialAvatar
-              src={
-                'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
-              }
-              name={'Jane Cooper'}
-              title={'CEO at ABC Corporation'}
-            />
-          </Testimonial>
-        </Stack>
-      </Container>
-    </Box>
-  )
-}
+export default Testimonials;

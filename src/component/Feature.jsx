@@ -22,7 +22,7 @@ export default function Feature() {
           borderBottom="1px solid"
           borderColor="gray.300"
         >
-          Traveling with AirBnb
+          Interview Features
         </Heading>
         <Flex
           as="section"
@@ -69,9 +69,8 @@ export default function Feature() {
 export const featuresList = [
   {
     id: 1,
-    title: '24/7 customer support',
-    desc: `Day or night, we’re here for you. Talk to our support team from anywhere in the world,
-    any hour of day.`,
+    title: 'Mock Interviews',
+    desc: `Practice mock interviews with industry professionals to improve your interview skills.`,
     icon: (
       <svg
         style={{ width: '2rem', height: '2rem' }}
@@ -95,9 +94,8 @@ export const featuresList = [
   },
   {
     id: 2,
-    title: 'Global hospitality standards',
-    desc: `Guests review their hosts after each stay. All hosts must maintain a minimum rating
-    and our hospitality standards to be on Airbnb.`,
+    title: 'Technical Skill Assessments',
+    desc: `Evaluate your technical skills through various assessments designed by experts.`,
     icon: (
       <svg
         style={{ width: '2rem', height: '2rem' }}
@@ -116,9 +114,8 @@ export const featuresList = [
   },
   {
     id: 3,
-    title: ' 5-star hosts',
-    desc: `From fresh-pressed sheets to tips on where to get the best brunch, our hosts are full
-    of local hospitality.`,
+    title: ' AI Technical Interview ',
+    desc: `Experience an innovative approach to interviews as you engage in sessions facilitated entirely by artificial intelligence. `,
     icon: (
       <svg
         style={{ width: '2rem', height: '2rem' }}
