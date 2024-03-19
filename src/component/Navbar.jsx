@@ -6,6 +6,7 @@ import {
   Avatar,
   HStack,
   Text,
+  Image,
   IconButton,
   Button,
   Menu,
@@ -58,7 +59,13 @@ export default function Navbar() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-            <Box><a href="/"> Logo</a></Box>
+            <Box><a href="/">
+            <Image
+  borderRadius='full'
+  boxSize='50px'
+  src="https://img.freepik.com/free-vector/hand-drawn-flat-design-anarchy-symbol_23-2149244760.jpg?size=626&ext=jpg&ga=GA1.1.1004057815.1710410468&semt=ais"
+  alt='Dan Abramov'
+/></a></Box>
             <HStack as={'nav'} spacing={4} display={{ base: 'none', md: 'flex' }}>
               {Links.map((link) => (
                 <NavLink key={link}>{link}</NavLink>

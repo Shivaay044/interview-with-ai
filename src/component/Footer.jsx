@@ -69,7 +69,7 @@ export default function Footer() {
              <Image
   borderRadius='full'
   boxSize='150px'
-  src='https://upload.wikimedia.org/wikipedia/en/8/86/Avatar_Aang.png'
+  src='https://img.freepik.com/free-vector/hand-drawn-flat-design-anarchy-symbol_23-2149244362.jpg?size=626&ext=jpg&ga=GA1.1.1004057815.1710410468&semt=ais'
   alt='Dan Abramov'
 />
             </Box>
