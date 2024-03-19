@@ -14,8 +14,31 @@ import {
 } from '@chakra-ui/react'
 import Navbar from '../../component/Navbar'
 import Footer from '../../component/Footer'
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { loginApi } from '../../Redux/auth/login'
+import LandingPg from '../Landing/LandingPg'
 
 export default function Login() {
+  const [form,setform]=useState("")
+  const dispatch=useDispatch()
+  const {error,isLoading,isLoggedIn,user}=useSelector((store)=>store.loginReducer)
+ 
+  const handlechange=(e)=>{
+      setform({...form,[e.target.name]: e.target.value})
+  }
+
+  const handleclick=()=>{
+   
+    dispatch(loginApi(form)).then(()=>{
+      console.log(user)
+    })
+ 
+  }
+
+  if(isLoggedIn){
+    return <LandingPg />
+  }
   return (
     <>
     <Navbar />
@@ -25,11 +48,11 @@ export default function Login() {
           <Heading fontSize={'2xl'}>Sign in to your account</Heading>
           <FormControl id="email">
             <FormLabel>Email address</FormLabel>
-            <Input type="email" />
+            <Input type="email" onChange={handlechange} name="email" required/>
           </FormControl>
           <FormControl id="password">
             <FormLabel>Password</FormLabel>
-            <Input type="password" />
+            <Input type="password" onChange={handlechange} name="password" required/>
           </FormControl>
           <Stack spacing={6}>
             <Stack
@@ -39,7 +62,7 @@ export default function Login() {
               <Checkbox>Remember me</Checkbox>
               <Text color={'blue.500'}>Forgot password?</Text>
             </Stack>
-            <Button colorScheme={'blue'} variant={'solid'}>
+            <Button onClick={handleclick} colorScheme={'blue'} variant={'solid'}>
               Sign in
             </Button>
           </Stack>

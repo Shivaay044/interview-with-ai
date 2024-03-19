@@ -15,23 +15,66 @@ import {
   Text,
   useColorModeValue,
   Link,
+  Spinner,
 } from '@chakra-ui/react'
 import { useState } from 'react'
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import Navbar from '../../component/Navbar'
 import Footer from '../../component/Footer'
 
+import { useDispatch, useSelector } from 'react-redux'
+import Loader from '../../component/Loader'
+import { userRestraionApi } from '../../Redux/auth/singup'
+import Otp from '../../component/Otp'
+
+const userdata={
+  name:"",
+  email:"",
+  password:""
+}
+
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false)
+const [form,setform]=useState(userdata)
 
-  return (
+const singupselector=useSelector((store)=>store.singupReducer)
+const dispatch=useDispatch()
+
+const  {
+  user,
+  isSignedUp,
+  isLoading,
+  error,
+}=singupselector
+
+
+const handleclick=()=>{
+  // console.log(form)
+
+  dispatch(userRestraionApi(form))
+  // userRestraionApi(form)
+}
+
+const handlecahnge=(e)=>{
+  setform({...form,[e.target.name]:e.target.value})
+}
+
+
+ // Call useColorModeValue unconditionally
+ const bgColor = useColorModeValue('gray.50', 'gray.800')
+ const textColor =useColorModeValue('white', 'gray.700');
+
+
+
+
+  return isLoading ? <Loader /> : isSignedUp ? <Otp /> : (
     <>
     <Navbar />
     <Flex
       minH={'100vh'}
       align={'center'}
       justify={'center'}
-      bg={useColorModeValue('gray.50', 'gray.800')}>
+      bg={bgColor}>
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
         <Stack align={'center'}>
           <Heading fontSize={'4xl'} textAlign={'center'}>
@@ -43,32 +86,33 @@ export default function Signup() {
         </Stack>
         <Box
           rounded={'lg'}
-          bg={useColorModeValue('white', 'gray.700')}
+          bg={textColor}
           boxShadow={'lg'}
           p={8}>
           <Stack spacing={4}>
             <HStack>
-              <Box>
+              <Box w={"100%"}>
                 <FormControl id="firstName" isRequired>
-                  <FormLabel>First Name</FormLabel>
-                  <Input type="text" />
+                  <FormLabel> Name</FormLabel>
+                  <Input type="text" placeholder='Name' onChange={handlecahnge}  name='username'  required />
                 </FormControl>
               </Box>
-              <Box>
-                <FormControl id="lastName">
-                  <FormLabel>Last Name</FormLabel>
-                  <Input type="text" />
-                </FormControl>
-              </Box>
+             
             </HStack>
-            <FormControl id="email" isRequired>
+            <FormControl >
+            <Box>
+                <FormControl id="lastName">
+                  <FormLabel>Avatar</FormLabel>
+                  <Input type="file" placeholder='avatar'   required />
+                </FormControl>
+              </Box>
               <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <Input type="email" name='email' placeholder='Email'  onChange={handlecahnge}  required />
             </FormControl>
-            <FormControl id="password" isRequired>
+            <FormControl >
               <FormLabel>Password</FormLabel>
               <InputGroup>
-                <Input type={showPassword ? 'text' : 'password'} />
+                <Input      id="password" placeholder='password' onChange={handlecahnge}  name='password'  required  type={showPassword ? 'text' : 'password'} />
                 <InputRightElement h={'full'}>
                   <Button
                     variant={'ghost'}
@@ -80,6 +124,8 @@ export default function Signup() {
             </FormControl>
             <Stack spacing={10} pt={2}>
               <Button
+
+              onClick={handleclick}
                 loadingText="Submitting"
                 size="lg"
                 bg={'blue.400'}
