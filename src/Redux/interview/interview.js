@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import instance from "../../Config/authAxios";
-import { toast } from "react-toastify";
 
 
 
@@ -18,7 +17,7 @@ export const fetchInterviews = createAsyncThunk(
       const response = await instance.post("/interviews",data);
       return response.data;
     } catch (error) {
-      toast.error(error?.message);
+    
       return rejectWithValue(error.response?.data);
     }
   }

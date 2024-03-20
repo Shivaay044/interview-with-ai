@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import instance from "../../Config/authAxios";
-import { toast } from "react-toastify";
+
 const initialState = {
   user: null,
   isSignedUp: false,
@@ -8,19 +8,16 @@ const initialState = {
   error: null,
   verifyingOTP: false,
   otpVerified: false,
-  
 };
 
 export const userRestraionApi = createAsyncThunk(
   "registration",
   async (data, { rejectWithValue }) => {
     try {
-      const response = await instance.post("/user/register",data);
-      toast.success(response?.data?.message)
+      const response = await instance.post("/user/register", data);
+
       return await response.data;
     } catch (error) {
-      console.log(error?.message)
-      toast.error(error?.message)
       return rejectWithValue(error.response?.data);
     }
   }
@@ -29,14 +26,12 @@ export const userRestraionApi = createAsyncThunk(
 export const verifyOtpApi = createAsyncThunk(
   "verifyOtp",
   async (data, { rejectWithValue }) => {
-    
     try {
       const response = await instance.post("/user/activate-User", data);
-      console.log(response)
-      toast.success(response?.data?.message)
+      console.log(response);
+
       return response.data;
     } catch (error) {
-      toast.error(error?.message)
       return rejectWithValue(error.response?.data);
     }
   }
@@ -56,7 +51,7 @@ const singupSlice = createSlice({
         state.isLoading = false;
         state.isSignedUp = true;
         state.user = action.payload;
-       
+
         state.error = null;
       })
 
@@ -79,11 +74,9 @@ const singupSlice = createSlice({
         state.otpVerified = false;
         state.error = action.payload;
       });
-      
   },
 });
 
-
-const singupReducer=singupSlice.reducer
+const singupReducer = singupSlice.reducer;
 
 export default singupReducer;
