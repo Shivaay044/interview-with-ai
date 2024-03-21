@@ -1,5 +1,4 @@
 import React from "react";
-import Style from "./Style/audiotest.module.css"
 import { Box, Center, Heading, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 
