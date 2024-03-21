@@ -3,7 +3,6 @@ import { Card, CardBody, CardFooter } from "@chakra-ui/react";
 import React, { useState } from "react";
 import soundTest from "../../Utils/soundTest.mp3"
 import { Flex } from "antd";
-import Webcam from "react-webcam";
 
 function AudioTest({setAudio}) {
 
