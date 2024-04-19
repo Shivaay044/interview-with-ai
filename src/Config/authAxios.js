@@ -1,10 +1,11 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-const Token = null;
+const Token = localStorage.getItem("token") || null;
+
 
 const instance = axios.create({
   // baseURL: process.env.baseURL ,
-  baseURL: "http://localhost:8080",
+  baseURL: "http://localhost:7070",
   headers: {
     Authorization: `Bearer ${Token}`,
   },

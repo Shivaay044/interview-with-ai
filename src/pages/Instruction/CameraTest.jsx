@@ -24,7 +24,7 @@ function CameraTest({ setVideo }) {
   return (
     <Box>
       <Heading size="md" mt={20} textAlign={"center"}>
-        Audio Test
+        Camera Test
       </Heading>
       <Center mt={10}>
         <Card variant="filled" height="50vh">

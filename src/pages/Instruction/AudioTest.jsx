@@ -9,7 +9,7 @@ function AudioTest({setAudio}) {
   return (
     <Box>
       <Heading size="md" mt={20} textAlign={"center"}>
-      Camera Test
+      Audio Test
       </Heading>
       <Center mt={10}>
         <Card variant="filled" height="50vh">

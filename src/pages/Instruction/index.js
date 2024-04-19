@@ -4,6 +4,7 @@ import StartInstruction from './StartInstruction';
 import SystemPermission from './SystemPermission';
 import AudioTest from './AudioTest';
 import CameraTest from './CameraTest';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -18,6 +19,7 @@ const StepBuilder = () => {
   const [current, setCurrent] = useState(0);
   const [audio,setAudio] = useState(true);
   const [video,setVideo] = useState(true);
+  const navigate = useNavigate();
 
   const steps = [
     {
@@ -51,11 +53,14 @@ const StepBuilder = () => {
   }));
 
   const contentStyle = {
-    // color: token.colorTextTertiary,
-    // backgroundColor: token.colorFillAlter,
-    // borderRadius: token.borderRadiusLG,
-    // marginTop: 50,
+    
   };
+
+  const handleProcessComplete = () =>{
+
+      message.success("process completed successfully!");
+      navigate("/start_interview");
+  }
 
   return (
     <div style={{margin:"50px"}}>
@@ -72,7 +77,7 @@ const StepBuilder = () => {
           </Button>
         )}
         {current === steps.length - 1 && (
-          <Button disabled={video&&current==3} type="primary" onClick={() => message.success('Processing complete!')}>
+          <Button disabled={video&&current==3} type="primary" onClick={handleProcessComplete}>
             Done
           </Button>
         )}

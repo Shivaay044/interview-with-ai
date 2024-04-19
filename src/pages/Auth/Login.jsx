@@ -30,9 +30,9 @@ export default function Login() {
 
   const handleclick=()=>{
    
-    dispatch(loginApi(form)).then(()=>{
-      console.log(user)
-    })
+    dispatch(loginApi(form))
+
+    
  
   }
 
